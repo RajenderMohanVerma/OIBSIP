@@ -1,0 +1,194 @@
+.admin-dashboard-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.admin-view-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.admin-view-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--color-text-primary);
+  margin-top: var(--space-1);
+}
+
+/* Metrics Grid */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.admin-stat-box {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.admin-stat-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.admin-stat-num {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.admin-stat-sub {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* Section Card */
+.admin-section-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+
+.admin-section-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* Popular Pizzas */
+.popular-pizzas-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.popular-pizza-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  gap: var(--space-3);
+}
+
+.popular-rank {
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-crimson);
+  width: 32px;
+}
+
+.popular-name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  flex: 1;
+}
+
+.popular-count {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Table */
+.admin-table-container {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-xs);
+  text-align: left;
+}
+
+.admin-table th {
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  vertical-align: middle;
+}
+
+.admin-table tr:hover td {
+  background-color: var(--color-surface);
+}
+
+.admin-order-link {
+  color: #f28b87;
+  font-weight: 600;
+}
+
+.admin-order-link:hover {
+  text-decoration: underline;
+}
+
+.d-block {
+  display: block;
+}
+
+.status-select-sm {
+  padding: 4px 8px;
+  font-size: 11px;
+  width: auto;
+}
+
+/* States */
+.admin-loading-state,
+.admin-error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) 0;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

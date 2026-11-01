@@ -1,0 +1,246 @@
+.order-detail-page {
+  padding: var(--space-8) 0 var(--space-16);
+  background-color: var(--color-charcoal);
+  color: var(--color-text-primary);
+  min-height: calc(100vh - 68px);
+}
+
+.detail-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  font-size: var(--text-xs);
+}
+
+.back-link {
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.back-link:hover {
+  color: var(--color-crimson);
+}
+
+.order-date-tag {
+  color: var(--color-text-muted);
+}
+
+.order-title-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.order-number-title {
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  color: var(--color-text-primary);
+}
+
+.status-pills-row {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Order Cards */
+.order-card {
+  padding: var(--space-6);
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.timeline-card {
+  margin-bottom: var(--space-8);
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+
+/* Layout */
+.order-info-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* Items */
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.item-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  gap: var(--space-3);
+}
+
+.item-name-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-name-specs strong {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+.item-name-specs span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.toppings-text {
+  font-size: 11px;
+  color: #f28b87;
+}
+
+.instructions-text {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.item-price-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.item-price-side span {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.item-price-side strong {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+/* Breakdown */
+.order-breakdown-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.breakdown-row.discount {
+  color: #86efac;
+}
+
+.breakdown-divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: 2px 0;
+}
+
+.breakdown-row.total-row {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+.breakdown-row.total-row strong {
+  font-size: 1.15rem;
+}
+
+/* Side Info */
+.order-side-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.order-address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.rider-note {
+  color: #f28b87;
+  margin-top: 4px;
+}
+
+.payment-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+}
+
+.p-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.p-field span {
+  color: var(--color-text-muted);
+}
+
+.p-field strong {
+  color: var(--color-text-primary);
+}
+
+.p-field code {
+  color: #f28b87;
+  background: var(--color-surface);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+/* States */
+.order-detail-loading,
+.order-detail-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) 0;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .order-info-layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,189 @@
+.dashboard-page {
+  padding: var(--space-8) 0 var(--space-16);
+  background-color: var(--color-charcoal);
+  color: var(--color-text-primary);
+  min-height: calc(100vh - 68px);
+}
+
+.dashboard-welcome-banner {
+  background: radial-gradient(circle at 10% 50%, #152219 0%, #07130d 70%, var(--color-surface) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-name {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--color-text-primary);
+  margin-top: var(--space-1);
+}
+
+.welcome-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin-top: var(--space-1);
+}
+
+/* Stats */
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.stat-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.stat-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.stat-sub {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* Shortcuts */
+.dashboard-shortcuts-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.shortcut-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  transition: all var(--transition-fast);
+}
+
+.shortcut-card:hover {
+  border-color: var(--color-crimson);
+  transform: translateY(-3px);
+  background-color: var(--color-surface-elevated);
+}
+
+.shortcut-icon {
+  font-size: 2rem;
+}
+
+.shortcut-card strong {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+.shortcut-card p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* Recent Orders Section */
+.dashboard-recent-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.recent-orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.recent-order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  transition: border-color var(--transition-fast);
+}
+
+.recent-order-item:hover {
+  border-color: #4a574e;
+}
+
+.recent-order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recent-order-num {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.recent-order-date {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.recent-order-pills {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.recent-order-amount {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.dashboard-empty-orders {
+  text-align: center;
+  padding: var(--space-12);
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+@media (max-width: 900px) {
+  .dashboard-stats-grid,
+  .dashboard-shortcuts-row {
+    grid-template-columns: 1fr;
+  }
+}

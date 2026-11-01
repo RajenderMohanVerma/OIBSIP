@@ -1,0 +1,275 @@
+.confirmation-page {
+  padding: var(--space-8) 0 var(--space-16);
+  background-color: var(--color-charcoal);
+  color: var(--color-text-primary);
+  min-height: calc(100vh - 68px);
+}
+
+/* Success Banner */
+.confirmation-banner {
+  background: radial-gradient(circle at 50% 0%, #17241c 0%, #07130d 70%, var(--color-surface) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+}
+
+.banner-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--color-forest);
+  border: 2px solid var(--color-success);
+  color: var(--color-success);
+  font-size: 2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(79, 138, 79, 0.4);
+  margin-bottom: var(--space-2);
+}
+
+.confirmation-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-text-primary);
+}
+
+.confirmation-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  max-width: 580px;
+  line-height: 1.6;
+}
+
+.confirmation-order-id {
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2);
+}
+
+.confirmation-order-id strong {
+  color: #f28b87;
+  letter-spacing: 0.05em;
+}
+
+/* Common Card */
+.confirmation-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.card-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.card-sub {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Timeline Card */
+.timeline-section-card {
+  margin-bottom: var(--space-8);
+}
+
+.timeline-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Grid Layout */
+.confirmation-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* Items List */
+.confirmed-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.confirmed-item-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  gap: var(--space-4);
+}
+
+.confirmed-item-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.confirmed-item-name {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.confirmed-item-specs {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.confirmed-item-note {
+  font-size: 11px;
+  color: #f28b87;
+  font-style: italic;
+}
+
+.confirmed-item-pricing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.qty-tag {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.price-tag {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* Totals Box */
+.confirmed-totals-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.totals-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.totals-row.discount {
+  color: #86efac;
+}
+
+.totals-divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--space-1) 0;
+}
+
+.totals-row.grand-total {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+.totals-row.grand-total strong {
+  font-size: 1.15rem;
+}
+
+/* Side Column */
+.confirmation-side-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.confirmed-address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.address-instr {
+  color: #f28b87;
+  margin-top: 4px;
+}
+
+.payment-summary-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.payment-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  gap: var(--space-2);
+}
+
+.p-label {
+  color: var(--color-text-muted);
+}
+
+.p-val {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.confirmation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* States */
+.confirmation-loading,
+.confirmation-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) 0;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .confirmation-grid {
+    grid-template-columns: 1fr;
+  }
+}

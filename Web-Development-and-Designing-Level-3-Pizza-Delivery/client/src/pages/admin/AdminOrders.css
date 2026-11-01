@@ -1,0 +1,69 @@
+.admin-orders-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.admin-order-count {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.admin-orders-controls {
+  padding: var(--space-4);
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.order-search-form {
+  display: flex;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 260px;
+}
+
+.search-input-admin {
+  max-width: 320px;
+}
+
+.order-filters-group {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.filter-select-admin {
+  width: 170px;
+}
+
+.admin-orders-table-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.admin-empty-state {
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.admin-pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.page-indicator {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
