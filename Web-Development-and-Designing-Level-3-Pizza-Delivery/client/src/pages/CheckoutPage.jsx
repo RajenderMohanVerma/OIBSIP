@@ -7,6 +7,14 @@ import { orderService, paymentService } from '../services';
 import { formatPrice } from '../utils/helpers';
 import './CheckoutPage.css';
 
+const AVAILABLE_COUPONS = [
+  { code: 'PIZZALOVE', label: '₹30 OFF', min: 'Min ₹199' },
+  { code: 'WELCOME20', label: '20% OFF', min: 'Min ₹299' },
+  { code: 'CRAFTDAY', label: '15% OFF', min: 'Min ₹399' },
+  { code: 'FLAT50', label: '₹50 OFF', min: 'Min ₹499' },
+  { code: 'FEAST100', label: '₹100 OFF', min: 'Min ₹799' },
+];
+
 const CheckoutPage = () => {
   const { items, clearCart, estimatedSubtotal } = useCart();
   const { user } = useAuth();
