@@ -13,7 +13,9 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const couponCode = location.state?.appliedCoupon || '';
+  const [appliedCoupon, setAppliedCoupon] = useState(location.state?.appliedCoupon || '');
+  const [couponInput, setCouponInput] = useState('');
+  const [couponMsg, setCouponMsg] = useState(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -64,7 +66,7 @@ const CheckoutPage = () => {
             toppings: i.toppings,
             quantity: i.quantity,
           })),
-          couponCode: couponCode || undefined,
+          couponCode: appliedCoupon || undefined,
         };
 
         const res = await orderService.validateCart(payload);
@@ -80,11 +82,26 @@ const CheckoutPage = () => {
     };
 
     validate();
-  }, [items, couponCode, navigate]);
+  }, [items, appliedCoupon, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  
+  const handleApplyCoupon = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!couponInput.trim()) return;
+    setAppliedCoupon(couponInput.trim().toUpperCase());
+    toast.success(`Checking coupon: ${couponInput.trim().toUpperCase()}`);
+  };
+
+  const handleRemoveCoupon = () => {
+    setAppliedCoupon('');
+    setCouponInput('');
+    setCouponMsg(null);
+    toast('Coupon removed', { icon: 'ℹ️' });
   };
 
   const handlePlaceOrder = async (e) => {
@@ -118,7 +135,7 @@ const CheckoutPage = () => {
           instructions: formData.instructions.trim(),
         },
         paymentMethod,
-        couponCode: couponCode || undefined,
+        couponCode: appliedCoupon || undefined,
       };
 
       // 1. Create order on the server
@@ -440,7 +457,7 @@ const CheckoutPage = () => {
 
                 {discount > 0 && (
                   <div className="summary-row discount-row">
-                    <span className="row-label">Promo Discount ({couponCode})</span>
+                    <span className="row-label">Promo Discount ({appliedCoupon})</span>
                     <span className="row-val font-mono">−{formatPrice(discount)}</span>
                   </div>
                 )}
@@ -473,8 +490,8 @@ const CheckoutPage = () => {
                 {loading
                   ? 'Processing Order...'
                   : paymentMethod === 'razorpay'
-                  ? `Pay ${formatPrice(finalTotal)} via Razorpay`
-                  : `Place COD Order • ${formatPrice(finalTotal)}`}
+                    ? `Pay ${formatPrice(finalTotal)} via Razorpay`
+                    : `Place COD Order • ${formatPrice(finalTotal)}`}
               </button>
 
               <div className="checkout-security-footnote">

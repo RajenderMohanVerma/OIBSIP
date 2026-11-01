@@ -238,3 +238,58 @@
   }
 }
 
+
+/* Coupon Form in Checkout */
+.checkout-coupon-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-top: 1px dashed var(--color-border);
+}
+
+.checkout-coupon-input-wrapper {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.coupon-input {
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  font-size: var(--text-xs);
+  flex: 1;
+}
+
+.coupon-msg-active {
+  font-size: var(--text-xs);
+  color: #86efac;
+  font-weight: 500;
+}
+
+.coupon-suggestions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+
+.code-pill {
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  color: #f28b87;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.code-pill:hover {
+  background: var(--color-surface-elevated);
+  border-color: var(--color-crimson);
+  color: #FFFFFF;
+}
