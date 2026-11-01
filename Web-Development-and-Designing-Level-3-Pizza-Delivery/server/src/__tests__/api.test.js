@@ -1,19 +1,35 @@
+require('dotenv').config();
+const dns = require('dns');
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
+} catch (e) {
+  // ignore
+}
+
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../app');
 const User = require('../models/User');
 const Pizza = require('../models/Pizza');
 
-const MONGO_URI = process.env.MONGODB_URI;
+// Use isolated test database so production/dev seeded data is NEVER wiped
+let baseUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/crust-and-craft-test';
+const TEST_MONGO_URI = baseUri.includes('?') 
+  ? baseUri.replace(/\/[^/?]+(\?)/, '/crust-and-craft-test$1')
+  : baseUri.replace(/\/[^/]+$/, '/crust-and-craft-test');
 
 beforeAll(async () => {
-  await mongoose.connect(MONGO_URI);
-});
+  await mongoose.connect(TEST_MONGO_URI, {
+    serverSelectionTimeoutMS: 15000,
+  });
+}, 20000);
 
 afterAll(async () => {
-  await mongoose.connection.db.dropDatabase();
+  if (mongoose.connection && mongoose.connection.db) {
+    await mongoose.connection.db.dropDatabase();
+  }
   await mongoose.connection.close();
-});
+}, 20000);
 
 beforeEach(async () => {
   await User.deleteMany({});
@@ -34,20 +50,20 @@ describe('Auth API', () => {
     expect(res.body.data.token).toBeDefined();
     expect(res.body.data.user.email).toBe(validUser.email);
     expect(res.body.data.user.password).toBeUndefined();
-  });
+  }, 10000);
 
   test('POST /api/auth/register — rejects duplicate email', async () => {
     await request(app).post('/api/auth/register').send(validUser);
     const res = await request(app).post('/api/auth/register').send(validUser);
     expect(res.status).toBe(409);
-  });
+  }, 10000);
 
   test('POST /api/auth/register — rejects weak password', async () => {
     const res = await request(app)
       .post('/api/auth/register')
       .send({ name: 'Test', email: 'weak@example.com', password: 'weak' });
     expect(res.status).toBe(422);
-  });
+  }, 10000);
 
   test('POST /api/auth/login — returns token on valid credentials', async () => {
     await request(app).post('/api/auth/register').send(validUser);
@@ -56,7 +72,7 @@ describe('Auth API', () => {
       .send({ email: validUser.email, password: validUser.password });
     expect(res.status).toBe(200);
     expect(res.body.data.token).toBeDefined();
-  });
+  }, 10000);
 
   test('POST /api/auth/login — rejects wrong password', async () => {
     await request(app).post('/api/auth/register').send(validUser);
@@ -64,12 +80,12 @@ describe('Auth API', () => {
       .post('/api/auth/login')
       .send({ email: validUser.email, password: 'WrongPass123' });
     expect(res.status).toBe(401);
-  });
+  }, 10000);
 
   test('GET /api/auth/me — requires auth', async () => {
     const res = await request(app).get('/api/auth/me');
     expect(res.status).toBe(401);
-  });
+  }, 10000);
 
   test('GET /api/auth/me — returns user when authenticated', async () => {
     const regRes = await request(app).post('/api/auth/register').send(validUser);
@@ -81,7 +97,7 @@ describe('Auth API', () => {
 
     expect(res.status).toBe(200);
     expect(res.body.data.user.email).toBe(validUser.email);
-  });
+  }, 10000);
 });
 
 describe('Pizza API', () => {
@@ -96,7 +112,6 @@ describe('Pizza API', () => {
   };
 
   beforeEach(async () => {
-    // Create and log in as admin
     const admin = await User.create({
       name: 'Admin',
       email: 'admin@test.com',
@@ -113,7 +128,7 @@ describe('Pizza API', () => {
     const res = await request(app).get('/api/pizzas');
     expect(res.status).toBe(200);
     expect(res.body.data).toEqual([]);
-  });
+  }, 10000);
 
   test('POST /api/pizzas — admin can create pizza', async () => {
     const res = await request(app)
@@ -122,7 +137,7 @@ describe('Pizza API', () => {
       .send(pizza);
     expect(res.status).toBe(201);
     expect(res.body.data.pizza.name).toBe(pizza.name);
-  });
+  }, 10000);
 
   test('POST /api/pizzas — non-admin is rejected', async () => {
     const custRes = await request(app)
@@ -135,7 +150,7 @@ describe('Pizza API', () => {
       .set('Authorization', `Bearer ${custToken}`)
       .send(pizza);
     expect(res.status).toBe(403);
-  });
+  }, 10000);
 
   test('PATCH /api/pizzas/:id — admin can update', async () => {
     const createRes = await request(app)
@@ -151,7 +166,7 @@ describe('Pizza API', () => {
 
     expect(res.status).toBe(200);
     expect(res.body.data.pizza.basePrice).toBe(249);
-  });
+  }, 10000);
 });
 
 describe('Payment API', () => {
@@ -168,6 +183,5 @@ describe('Payment API', () => {
 
     expect(res.status).toBe(503);
     expect(res.body.message).toMatch(/Razorpay/i);
-  });
+  }, 10000);
 });
-
