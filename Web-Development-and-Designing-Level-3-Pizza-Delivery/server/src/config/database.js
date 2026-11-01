@@ -1,5 +1,13 @@
+const dns = require('dns');
 const mongoose = require('mongoose');
 const logger = require('../utils/logger');
+
+// Set Google Public DNS to resolve MongoDB Atlas SRV records reliably on Windows networks
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
+} catch (e) {
+  // Keep system default if unable to set custom DNS servers
+}
 
 const connectDB = async () => {
   try {
@@ -9,7 +17,7 @@ const connectDB = async () => {
     }
 
     const conn = await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 8000,
       socketTimeoutMS: 45000,
     });
 
@@ -30,4 +38,3 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
-
